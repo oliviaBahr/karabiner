@@ -1,0 +1,374 @@
+{
+  "title": "Karabiner Elements Complex Modification file",
+  "type": "object",
+  "properties": {
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "rules": {
+      "title": "Rules",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Rule"
+      }
+    }
+  },
+  "required": [
+    "title",
+    "rules"
+  ],
+  "definitions": {
+    "KeyCodeStr": {
+      "title": "KeyCodeStr",
+      "description": "References:\n- [karabiner-complex-rules-generator/src/constants.ts](https://github.com/genesy/karabiner-complex-rules-generator/blob/source/src/constants.ts)\n- [Karabiner-Elements/simple_modifications.json](https://github.com/pqrs-org/Karabiner-Elements/blob/main/src/apps/PreferencesWindow/Resources/simple_modifications.json)",
+      "enum": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "0",
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "w",
+        "x",
+        "y",
+        "z",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "f5",
+        "f6",
+        "f7",
+        "f8",
+        "f9",
+        "f10",
+        "f11",
+        "f12",
+        "f13",
+        "f14",
+        "f15",
+        "f16",
+        "f17",
+        "f18",
+        "f19",
+        "escape",
+        "grave_accent_and_tilde",
+        "tab",
+        "caps_lock",
+        "spacebar",
+        "shift",
+        "left_shift",
+        "right_shift",
+        "up_arrow",
+        "left_arrow",
+        "down_arrow",
+        "right_arrow",
+        "return_or_enter",
+        "backslash",
+        "open_bracket",
+        "close_bracket",
+        "semicolon",
+        "quote",
+        "comma",
+        "period",
+        "slash",
+        "hyphen",
+        "equal_sign",
+        "delete_or_backspace",
+        "display_brightness_decrement",
+        "display_brightness_increment",
+        "mission_control",
+        "launchpad",
+        "illumination_decrement",
+        "illumination_increment",
+        "rewind",
+        "play_or_pause",
+        "fastforward",
+        "mute",
+        "volume_decrement",
+        "volume_increment"
+      ],
+      "markdownDescription": "References:\n- [karabiner-complex-rules-generator/src/constants.ts](https://github.com/genesy/karabiner-complex-rules-generator/blob/source/src/constants.ts)\n- [Karabiner-Elements/simple_modifications.json](https://github.com/pqrs-org/Karabiner-Elements/blob/main/src/apps/PreferencesWindow/Resources/simple_modifications.json)"
+    },
+    "Modifier": {
+      "title": "Modifier",
+      "description": "An enumeration.",
+      "enum": [
+        "caps_lock",
+        "left_command",
+        "left_control",
+        "left_option",
+        "left_shift",
+        "right_command",
+        "right_control",
+        "right_option",
+        "right_shift",
+        "fn",
+        "command",
+        "control",
+        "option",
+        "shift",
+        "left_alt",
+        "left_gui",
+        "right_alt",
+        "right_gui",
+        "any"
+      ],
+      "markdownDescription": "An enumeration."
+    },
+    "Modifiers": {
+      "title": "Modifiers",
+      "description": "Reference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/from/modifiers/",
+      "type": "object",
+      "properties": {
+        "mandatory": {
+          "markdownDescription": "Modifiers which must be pressed.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Modifier"
+          }
+        },
+        "optional": {
+          "title": "Optional",
+          "markdownDescription": "Modifiers which can be pressed.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "markdownDescription": "Reference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/from/modifiers/"
+    },
+    "FromEvent": {
+      "title": "FromEvent",
+      "type": "object",
+      "properties": {
+        "key_code": {
+          "title": "Key Code",
+          "markdownDescription": "Key code which you want to change.",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/KeyCodeStr"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "modifiers": {
+          "title": "Modifiers",
+          "markdownDescription": "Specify mandatory and optional modifiers.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/Modifiers"
+            }
+          ]
+        }
+      }
+    },
+    "ToEvent": {
+      "title": "ToEvent",
+      "type": "object",
+      "properties": {
+        "key_code": {
+          "title": "Key Code",
+          "markdownDescription": "Key code which you want to post",
+          "anyOf": [
+            {
+              "$ref": "#/definitions/KeyCodeStr"
+            },
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "consumer_key_code": {
+          "title": "Consumer Key Code",
+          "markdownDescription": "Consumer key code (media key code) which you want to post"
+        },
+        "pointing_button": {
+          "title": "Pointing Button",
+          "markdownDescription": "Pointing button name which you want to post"
+        },
+        "shell_command": {
+          "title": "Shell Command",
+          "markdownDescription": "Shell command which you want to execute\n\nReference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/shell-command/",
+          "type": "string"
+        },
+        "select_input_source": {
+          "title": "Select Input Source",
+          "markdownDescription": "Input source which you want to switch"
+        },
+        "mouse_key": {
+          "title": "Mouse Key",
+          "markdownDescription": "A mouse key definition\n\nReference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/mouse-key/"
+        },
+        "sticky_modifier": {
+          "title": "Sticky Modifier",
+          "markdownDescription": "A sticky modifier key definition\n\nReference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/sticky-modifier/",
+          "type": "object",
+          "additionalProperties": {
+            "enum": [
+              "on",
+              "off",
+              "toggle"
+            ],
+            "type": "string"
+          }
+        },
+        "software_function": {
+          "title": "Software Function",
+          "markdownDescription": "A software function definition\n\nReference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/software_function/"
+        },
+        "modifiers": {
+          "markdownDescription": "Modifiers which are post with the event\n\nReference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/modifiers/",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Modifier"
+          }
+        },
+        "lazy": {
+          "title": "Lazy",
+          "markdownDescription": "Lazy modifier flag\n\nReference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/lazy/",
+          "type": "boolean"
+        },
+        "repeat": {
+          "title": "Repeat",
+          "markdownDescription": "Key repeat flag\n\nReference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/repeat/",
+          "type": "boolean"
+        },
+        "halt": {
+          "title": "Halt",
+          "markdownDescription": "A flag for to_after_key_up\n\nReference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/halt/",
+          "type": "boolean"
+        },
+        "hold_down_milliseconds": {
+          "title": "Hold Down Milliseconds",
+          "markdownDescription": "Interval of key_down and key_up when these events are sent at the same time\n\nReference: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/to/hold-down-milliseconds/",
+          "type": "integer"
+        }
+      }
+    },
+    "Manipulator": {
+      "title": "Manipulator",
+      "description": "Reference: [complex_modifications manipulator definition][1]\n\n[1]: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "markdownDescription": "Always `\"basic\"`.",
+          "enum": [
+            "basic"
+          ],
+          "type": "string"
+        },
+        "from": {
+          "title": "From",
+          "markdownDescription": "The name of key code, consumer key code or pointing button which you want to change.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/FromEvent"
+            }
+          ]
+        },
+        "to": {
+          "title": "To",
+          "markdownDescription": "Events which are sent when you press `from` key.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ToEvent"
+          }
+        },
+        "to_if_alone": {
+          "title": "To If Alone",
+          "markdownDescription": "Events which are sent when you press `from` key alone.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ToEvent"
+          }
+        },
+        "to_if_held_down": {
+          "title": "To If Held Down",
+          "markdownDescription": "Events which are sent when you hold down `from` key.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ToEvent"
+          }
+        },
+        "to_after_key_up": {
+          "title": "To After Key Up",
+          "markdownDescription": "Events which are sent after you release `from` key.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ToEvent"
+          }
+        },
+        "to_delayed_action": {
+          "title": "To Delayed Action",
+          "markdownDescription": "Events which are sent after 500 milliseconds at you press `from` key.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ToEvent"
+          }
+        },
+        "description": {
+          "title": "Description",
+          "markdownDescription": "A human-readable comment.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "from"
+      ],
+      "markdownDescription": "Reference: [complex_modifications manipulator definition][1]\n\n[1]: https://karabiner-elements.pqrs.org/docs/json/complex-modifications-manipulator-definition/"
+    },
+    "Rule": {
+      "title": "Rule",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "type": "string"
+        },
+        "manipulators": {
+          "title": "Manipulators",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Manipulator"
+          }
+        }
+      },
+      "required": [
+        "manipulators"
+      ]
+    }
+  }
+}
